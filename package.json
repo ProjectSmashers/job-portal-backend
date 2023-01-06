@@ -1,0 +1,26 @@
+{
+  "name": "job-portal-backend",
+  "version": "1.0.0",
+  "description": "The backend project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProjectSmashers/job-portal-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ProjectSmashers/job-portal-backend/issues"
+  },
+  "homepage": "https://github.com/ProjectSmashers/job-portal-backend#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
