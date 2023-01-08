@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const setCandidate = require('../controllers/setCandidate')
 const candidates = [
   { id: 1, name: 'David' },  
   { id: 2, name: 'Smith' },  
@@ -10,6 +10,9 @@ const candidates = [
 router.get('/', (req, res) => {
   res.send(candidates);
 });
+
+router.post('/',setCandidate);
+
 
 /*
 router.post('/', (req, res) => {

@@ -5,12 +5,12 @@ const candidateSchema = new mongoose.Schema({
     basicDetail: {
         name: {
             type: String,
-            require: true,
+            //require: true,
         },
 
         dateOfBirth: {
             type: Date,
-            required: true,
+            //required: true,
         },
 
         address:{
@@ -31,13 +31,13 @@ const candidateSchema = new mongoose.Schema({
             type: Number,
             min: [1000000000, "Mobile no. must have 10 digits"],
             unique: true,
-            required: true
+            //required: true
         },
 
         email: {
             type: String,
             unique: true,
-            required: true
+            //required: true
 
         },
 
@@ -50,38 +50,38 @@ const candidateSchema = new mongoose.Schema({
     education: [{
         nameOfInstitute: {
             type: String,
-            required: true,
+            //required: true,
 
         },
 
         nameOfUniversity: {
             type: String,
-            required: true,
+            //required: true,
 
         },
 
 
         stream: {
             type: String,
-            required: true,
+            //required: true,
 
         },
 
         admissionYear: {
             type: Date,
-            required: true,
+            //required: true,
 
         },
 
         passingYear: {
             type: Date,
-            required: true,
+            //required: true,
 
         },
 
         aggregate: {
             type: Number,
-            required: true
+            //required: true
         },
 
 
@@ -138,7 +138,7 @@ const candidateSchema = new mongoose.Schema({
 
             credential:{
                 type:String,
-                required: true
+                //required: true
             }
         }
     ],
