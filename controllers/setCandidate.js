@@ -21,6 +21,7 @@ const createCandidate = async(req, res, next)=>{
     });
 
     try{
+        // if(Candidate.find({}))
         const candidate = await Candidate.create(req.body);
 
         console.log(candidate);
