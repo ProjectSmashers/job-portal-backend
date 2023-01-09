@@ -2,15 +2,17 @@ const express = require('express');
 const router = express.Router();
 
 
-const setCandidate = require('../controllers/setCandidate');
+const setCandidate = require('../controllers/setBasicDetail');
 const getAllCandidates = require('../controllers/getAllCandidates');
 const updateCandidate = require('../controllers/updateCandidate');
+const setBasicDetail = require('../controllers/setBasicDetail')
 const Candidate = require('../model/Candidate');
 
 
 router
   .get('/', getAllCandidates)
   .post('/', setCandidate)
+  .post('/:id/basicdetail', setBasicDetail)
   .put('/:id', updateCandidate)
 
 
