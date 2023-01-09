@@ -1,8 +1,9 @@
-const mongoose = require('mongoose')
-
+const mongoose = require('mongoose');
 const candidateSchema = new mongoose.Schema({
-
+    
+    
     basicDetail: {
+        
         name: {
             type: String,
             //require: true,
@@ -13,7 +14,7 @@ const candidateSchema = new mongoose.Schema({
             //required: true,
         },
 
-        address:{
+        address: {
             type: String,
 
         },
@@ -21,7 +22,7 @@ const candidateSchema = new mongoose.Schema({
         gender: {
             type: String,
             enum: {
-                values: ['Male', 'Female','Other'],
+                values: ['Male', 'Female', 'Other'],
                 message: '{VALUE} is not supported'
             }
 
@@ -45,122 +46,122 @@ const candidateSchema = new mongoose.Schema({
             type: String,
 
         }
-    },
-
-    education: [{
-        nameOfInstitute: {
-            type: String,
-            //required: true,
-
         },
 
-        nameOfUniversity: {
-            type: String,
-            //required: true,
-
-        },
-
-
-        stream: {
-            type: String,
-            //required: true,
-
-        },
-
-        admissionYear: {
-            type: Date,
-            //required: true,
-
-        },
-
-        passingYear: {
-            type: Date,
-            //required: true,
-
-        },
-
-        aggregate: {
-            type: Number,
-            //required: true
-        },
-
-
-    }
-    ],
-
-    skills: {
-
-        softSkill: {
-            language: [
-                { type: String, }
-            ],
-        },
-
-        hardSkill: {
-            programmingLanguages: [
-                { type: String }
-            ],
-            tool: [
-                {
-                    type: String,
-                }
-            ]
-        }
-
-    },
-
-    previousEmployement:[
-        {
-            nameOfCompany:{
-                type: String
-            },
-
-            duration:{
-                type: Number
-            }
-        }
-    ],
-
-    certificates:[
-        {
-            issuedBy:{
+        education: [{
+            nameOfInstitute: {
                 type: String,
-            },
-
-            issueDate:{
-                type:Date,
+                //required: true,
 
             },
 
-            name:{
-                type:String
+            nameOfUniversity: {
+                type: String,
+                //required: true,
+
             },
 
-            credential:{
-                type:String,
+
+            stream: {
+                type: String,
+                //required: true,
+
+            },
+
+            admissionYear: {
+                type: Date,
+                //required: true,
+
+            },
+
+            passingYear: {
+                type: Date,
+                //required: true,
+
+            },
+
+            aggregate: {
+                type: Number,
                 //required: true
-            }
-        }
-    ],
+            },
 
-    jobPreference:{
-        location:[
+
+        }
+        ],
+
+        skills: {
+
+            softSkill: {
+                language: [
+                    { type: String, }
+                ],
+            },
+
+            hardSkill: {
+                programmingLanguages: [
+                    { type: String }
+                ],
+                tool: [
+                    {
+                        type: String,
+                    }
+                ]
+            }
+
+        },
+
+        previousEmployement: [
             {
-                type:String,
+                nameOfCompany: {
+                    type: String
+                },
+
+                duration: {
+                    type: Number
+                }
             }
         ],
 
-        modeOfJob:{
-            type:String,
-            enum: {
-                values: ['Work from home', 'On site','Hybrid'],
-                message: '{VALUE} is not supported'
-            }
+        certificates: [
+            {
+                issuedBy: {
+                    type: String,
+                },
 
-        }
+                issueDate: {
+                    type: Date,
+
+                },
+
+                name: {
+                    type: String
+                },
+
+                credential: {
+                    type: String,
+                    //required: true
+                }
+            }
+        ],
+
+        jobPreference: {
+            location: [
+                {
+                    type: String,
+                }
+            ],
+
+            modeOfJob: {
+                type: String,
+                enum: {
+                    values: ['Work from home', 'On site', 'Hybrid'],
+                    message: '{VALUE} is not supported'
+                }
+
+            }
     }
-    
+
 
 });
 
-module.exports = mongoose.model('Candidate',candidateSchema);
+module.exports = mongoose.model('Candidate', candidateSchema);

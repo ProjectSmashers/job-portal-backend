@@ -38,5 +38,3 @@ const createCandidate = async(req, res, next)=>{
 };
 
 module.exports = createCandidate;
-
-
