@@ -2,18 +2,18 @@ const express = require('express');
 const router = express.Router();
 
 
-const setCandidate = require('../controllers/setBasicDetail');
 const getAllCandidates = require('../controllers/getAllCandidates');
-const updateCandidate = require('../controllers/updateCandidate');
-const setBasicDetail = require('../controllers/setBasicDetail')
+const setCandidate = require('../controllers/setCandidate');
+const updateBasicDetail = require('../controllers/updateBasicDetail');
+const getCandidateById = require('../controllers/getCandidateById')
 const Candidate = require('../model/Candidate');
 
 
 router
   .get('/', getAllCandidates)
+  .get('/:id', getCandidateById)
   .post('/', setCandidate)
-  .post('/:id/basicdetail', setBasicDetail)
-  .put('/:id', updateCandidate)
+  .post('/:id/basicdetail', updateBasicDetail)
 
 
 

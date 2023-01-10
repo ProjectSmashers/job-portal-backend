@@ -1,36 +1,67 @@
 const Candidate = require('../model/Candidate')
 
-const createCandidate = async(req, res, next)=>{
+const createCandidate = async (req, res, next) => {
 
-    const testCandidate = new Candidate({
+    const candidate = new Candidate({
         basicDetail: {
-            name: 'Anthony',
-            address:'Delhi',
-            gender: 'Male',
-            mobileNo: 9090987687,
-            email: 'anthony@MediaList.com',
+            name: req.body.basicDetail.name,
+            dateOfBirth: req.body.basicDetail.dateOfBirth,
+            address: req.body.basicDetail.address,
+            gender: req.body.basicDetail.gender,
+            mobileNo: req.body.basicDetail.mobileNo,
+            email: req.body.basicDetail.email,
+            bio: req.body.basicDetail.bio
         },
-    
+
         education: [{
-            nameOfInstitute: 'IIT delhi',
-            nameOfUniversity: 'IIT Delhi',
-            stream: 'CSE',
-            aggregate: 78.8
-         }
-        ]
+            nameOfInstitute: req.body.education.nameOfInstitute,
+            nameOfUniversity: req.body.education.nameOfUniversity,
+            stream: req.body.education.stream,
+            admissionYear: req.body.education.admissionYear,
+            passingYear: req.body.education.passingYear,
+            aggregate: req.body.education.aggregate
+        }],
+
+        skills: {
+
+            softSkill: {
+                language: [req.body.skills.softSkill.language]
+            },
+
+            hardSkill: {
+                programmingLanguages: [req.body.skills.hardSkill.programmingLanguages],
+                tool: [req.body.skills.hardSkill.tool]
+            }
+        },
+
+        certificates: [
+            {
+                certificateName:req.body.certificates.certificateName,
+                issuedBy:req.body.certificates.issuedBy,
+                issueDate:req.body.certificates.issueDate,
+                credential:req.body.certificates.credential,
+            }
+        ],
+
+        jobPreference: {
+
+            location: [req.body.jobPreference.location],
+            modeOfJob:req.body.jobPreference.modeOfJob,
+        }
+
     });
 
-    try{
+    try {
         // if(Candidate.find({}))
         const candidate = await Candidate.create(req.body);
 
         console.log(candidate);
         res.status(200).json({
-            statusCode : 1,
+            statusCode: 1,
             message: 'Success',
             data: candidate
         })
-    }catch(err){
+    } catch (err) {
         console.error('Some error occured');
     }
 
