@@ -13,7 +13,7 @@ router
   .get('/', getAllCandidates)
   .get('/:id', getCandidateById)
   .post('/', setCandidate)
-  .post('/:id/basicdetail', updateBasicDetail)
+  .put('/:id/basicdetail', updateBasicDetail)
 
 
 
