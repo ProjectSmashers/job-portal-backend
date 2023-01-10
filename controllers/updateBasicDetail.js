@@ -9,9 +9,12 @@ const updateCandidate = async (req, res, next) => {
                 $set: {
                     basicDetail: {
                         name: req.body.basicDetail.name,
+                        dateOfBirth: req.body.basicDetail.dateOfBirth,
+                        address: req.body.basicDetail.address,
                         gender: req.body.basicDetail.gender,
                         mobileNo: req.body.basicDetail.mobileNo,
-                        email: req.body.basicDetail.email
+                        email: req.body.basicDetail.email,
+                        bio: req.body.basicDetail.bio
                     }
                 }
             }, { new: true, useFindAndModify: false });

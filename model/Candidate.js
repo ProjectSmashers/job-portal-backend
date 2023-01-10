@@ -124,6 +124,10 @@ const candidateSchema = new mongoose.Schema({
 
         certificates: [
             {
+                certificateName: {
+                    type: String
+                },
+
                 issuedBy: {
                     type: String,
                 },
@@ -131,10 +135,6 @@ const candidateSchema = new mongoose.Schema({
                 issueDate: {
                     type: Date,
 
-                },
-
-                name: {
-                    type: String
                 },
 
                 credential: {
