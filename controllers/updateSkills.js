@@ -6,7 +6,7 @@ const updateSkill = async (req, res, next) => {
     try {
         const candidate = await Candidate.findOneAndUpdate({ _id: uniqueID },
             {
-                $set: {
+                $push: {
                     skills: {
 
                         softSkill: {
