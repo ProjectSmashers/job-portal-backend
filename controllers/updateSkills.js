@@ -1,20 +1,22 @@
 const Candidate = require("../model/Candidate");
 
-const updateCandidate = async (req, res, next) => {
+const updateSkill = async (req, res, next) => {
     const uniqueID = req.params.id
     console.log(uniqueID)
     try {
         const candidate = await Candidate.findOneAndUpdate({ _id: uniqueID },
             {
                 $set: {
-                    basicDetail: {
-                        name: req.body.basicDetail.name,
-                        dateOfBirth: req.body.basicDetail.dateOfBirth,
-                        address: req.body.basicDetail.address,
-                        gender: req.body.basicDetail.gender,
-                        mobileNo: req.body.basicDetail.mobileNo,
-                        email: req.body.basicDetail.email,
-                        bio: req.body.basicDetail.bio
+                    skills: {
+
+                        softSkill: {
+                            language: [req.body.skills.softSkill.language]
+                        },
+
+                        hardSkill: {
+                            programmingLanguages: [req.body.skills.hardSkill.programmingLanguages],
+                            tool: [req.body.skills.hardSkill.tool]
+                        }
                     }
                 }
             }, { new: true, useFindAndModify: false });
@@ -26,6 +28,7 @@ const updateCandidate = async (req, res, next) => {
             data: candidate
         })
     }
+
     catch (err) {
         console.error('Some error occured');
         res.status(500).json({
@@ -36,5 +39,4 @@ const updateCandidate = async (req, res, next) => {
     }
 }
 
-
-module.exports = updateCandidate;
+module.exports = updateSkill;
