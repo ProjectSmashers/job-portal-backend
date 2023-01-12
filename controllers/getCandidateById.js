@@ -4,7 +4,7 @@ const candidateById = async (req, res, next) => {
     console.log(uniqueID)
     try {
 
-        const candidates = await Candidate.findById({_id: uniqueID},(err, candidates) => {
+        const candidates = await Candidate.findById({ _id: uniqueID }, (err, candidates) => {
             if (err) {
                 console.log(err);
                 res.status(500).json(
@@ -14,13 +14,13 @@ const candidateById = async (req, res, next) => {
                 )
             }
             else {
-            console.log(candidates);
-            res.status(200).json(
-                {
-                    message: 'success',
-                    data: candidates
-                }
-            )
+                console.log(candidates);
+                res.status(200).json(
+                    {
+                        message: 'success',
+                        data: candidates
+                    }
+                )
             }
         });
     } catch (err) {
