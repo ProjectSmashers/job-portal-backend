@@ -4,7 +4,7 @@ const updateCandidate = async (req, res, next) => {
     const uniqueID = req.params.id
     console.log(uniqueID)
     try {
-        const updateCandidate = await Candidate.findOneAndUpdate({ _id: uniqueID },
+        const candidate = await Candidate.findOneAndUpdate({ _id: uniqueID },
             {
                 $set: {
                     basicDetail: {
@@ -19,15 +19,20 @@ const updateCandidate = async (req, res, next) => {
                 }
             }, { new: true, useFindAndModify: false });
 
-        console.log(updateCandidate);
+        console.log(candidate);
         res.status(200).json({
             statusCode: 1,
             message: 'Updated',
-            data: updateCandidate
+            data: candidate
         })
     }
     catch (err) {
-        console.log(err)
+        console.error('Some error occured');
+        res.status(500).json({
+            statusCode: 0,
+            message: 'Failed',
+        })
+        console.error(err);
     }
 }
 

@@ -36,17 +36,17 @@ const createCandidate = async (req, res, next) => {
 
         certificates: [
             {
-                certificateName:req.body.certificates.certificateName,
-                issuedBy:req.body.certificates.issuedBy,
-                issueDate:req.body.certificates.issueDate,
-                credential:req.body.certificates.credential,
+                certificateName: req.body.certificates.certificateName,
+                issuedBy: req.body.certificates.issuedBy,
+                issueDate: req.body.certificates.issueDate,
+                credential: req.body.certificates.credential,
             }
         ],
 
         jobPreference: {
 
             location: [req.body.jobPreference.location],
-            modeOfJob:req.body.jobPreference.modeOfJob,
+            modeOfJob: req.body.jobPreference.modeOfJob,
         }
 
     });
@@ -63,6 +63,11 @@ const createCandidate = async (req, res, next) => {
         })
     } catch (err) {
         console.error('Some error occured');
+        res.status(500).json({
+            statusCode: 0,
+            message: 'Failed',
+        })
+        console.error(err);
     }
 
 

@@ -6,6 +6,7 @@ const getAllCandidates = require('../controllers/getAllCandidates');
 const setCandidate = require('../controllers/setCandidate');
 const updateBasicDetail = require('../controllers/updateBasicDetail');
 const getCandidateById = require('../controllers/getCandidateById')
+const updateCertificatesById = require('../controllers/updateCertificatesById')
 const Candidate = require('../model/Candidate');
 
 
@@ -13,7 +14,8 @@ router
   .get('/', getAllCandidates)
   .get('/:id', getCandidateById)
   .post('/', setCandidate)
-  .post('/:id/basicdetail', updateBasicDetail)
+  .put('/:id/basicdetail', updateBasicDetail)
+  .put('/:id/updateCertificate', updateCertificatesById)
 
 
 
