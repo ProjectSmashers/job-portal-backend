@@ -117,8 +117,8 @@ const candidateSchema = new mongoose.Schema({
 
     },
 
-    previousEmployement: [
-        {
+    previousEmployement: [ {
+        
             nameOfCompany: {
                 type: String
             },
@@ -126,7 +126,7 @@ const candidateSchema = new mongoose.Schema({
             duration: {
                 type: Number
             }
-        }
+        }  
     ],
 
     certificates: [
@@ -170,5 +170,27 @@ const candidateSchema = new mongoose.Schema({
 
 
 });
+
+
+//     jobPreference: [{
+        
+//             location: 
+//             {
+//                 type: String,
+//             }
+//         ,
+
+//         modeOfJob: {
+//             type: String,
+//             enum: {
+//                 values: ['Work from home', 'On site', 'Hybrid'],
+//                 message: '{VALUE} is not supported'
+//             }
+
+//         }
+//     }]
+
+
+// });
 
 module.exports = mongoose.model('Candidate', candidateSchema);
