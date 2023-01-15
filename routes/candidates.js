@@ -7,6 +7,7 @@ const setCandidate = require('../controllers/setCandidate');
 const updateBasicDetail = require('../controllers/updateBasicDetail');
 const getCandidateById = require('../controllers/getCandidateById')
 const Candidate = require('../model/Candidate');
+const updateSkill = require('../controllers/updateSkill')
 
 
 router
@@ -14,7 +15,7 @@ router
   .get('/:id', getCandidateById)
   .post('/', setCandidate)
   .post('/:id/basicdetail', updateBasicDetail)
-
+  .put('/:id/updateskill',updateSkill)
 
 
 

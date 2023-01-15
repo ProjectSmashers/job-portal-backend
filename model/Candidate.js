@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const candidateSchema = new mongoose.Schema({
-    
-    
+
+    test:String,
+
     basicDetail: {
-        
+
         name: {
             type: String,
             //require: true,
@@ -46,119 +47,118 @@ const candidateSchema = new mongoose.Schema({
             type: String,
 
         }
+    },
+
+    education: [{
+        nameOfInstitute: {
+            type: String,
+            //required: true,
+
         },
 
-        education: [{
-            nameOfInstitute: {
-                type: String,
-                //required: true,
+        nameOfUniversity: {
+            type: String,
+            //required: true,
 
+        },
+
+
+        stream: {
+            type: String,
+            //required: true,
+
+        },
+
+        admissionYear: {
+            type: Date,
+            //required: true,
+
+        },
+
+        passingYear: {
+            type: Date,
+            //required: true,
+
+        },
+
+        aggregate: {
+            type: Number,
+            //required: true
+        },
+
+
+    }
+    ],
+
+    skills: {
+
+
+        languages: [
+            { type: String, }
+        ],
+
+        programmingLanguages: [
+            { type: String }
+        ],
+
+        tools: [
+            {
+                type: String,
+            }
+        ]
+
+
+    },
+
+    previousEmployement: [
+        {
+            nameOfCompany: {
+                type: String
             },
 
-            nameOfUniversity: {
-                type: String,
-                //required: true,
+            duration: {
+                type: Number
+            }
+        }
+    ],
 
+    certificates: [
+        {
+            certificateName: {
+                type: String
             },
 
-
-            stream: {
+            issuedBy: {
                 type: String,
-                //required: true,
-
             },
 
-            admissionYear: {
+            issueDate: {
                 type: Date,
-                //required: true,
 
             },
 
-            passingYear: {
-                type: Date,
-                //required: true,
-
-            },
-
-            aggregate: {
-                type: Number,
+            credential: {
+                type: String,
                 //required: true
-            },
+            }
+        }
+    ],
 
+    jobPreference: {
+        location: [
+            {
+                type: String,
+            }
+        ],
+
+        modeOfJob: {
+            type: String,
+            enum: {
+                values: ['Work from home', 'On site', 'Hybrid'],
+                message: '{VALUE} is not supported'
+            }
 
         }
-        ],
-
-        skills: {
-
-            softSkill: {
-                language: [
-                    { type: String, }
-                ],
-            },
-
-            hardSkill: {
-                programmingLanguages: [
-                    { type: String }
-                ],
-                tool: [
-                    {
-                        type: String,
-                    }
-                ]
-            }
-
-        },
-
-        previousEmployement: [
-            {
-                nameOfCompany: {
-                    type: String
-                },
-
-                duration: {
-                    type: Number
-                }
-            }
-        ],
-
-        certificates: [
-            {
-                certificateName: {
-                    type: String
-                },
-
-                issuedBy: {
-                    type: String,
-                },
-
-                issueDate: {
-                    type: Date,
-
-                },
-
-                credential: {
-                    type: String,
-                    //required: true
-                }
-            }
-        ],
-
-        jobPreference: {
-            location: [
-                {
-                    type: String,
-                }
-            ],
-
-            modeOfJob: {
-                type: String,
-                enum: {
-                    values: ['Work from home', 'On site', 'Hybrid'],
-                    message: '{VALUE} is not supported'
-                }
-
-            }
     }
 
 
