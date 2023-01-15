@@ -4,7 +4,7 @@ const candidateSchema = new mongoose.Schema({
     test:String,
 
     basicDetail: {
-
+        
         name: {
             type: String,
             //require: true,
@@ -163,5 +163,27 @@ const candidateSchema = new mongoose.Schema({
 
 
 });
+
+
+//     jobPreference: [{
+        
+//             location: 
+//             {
+//                 type: String,
+//             }
+//         ,
+
+//         modeOfJob: {
+//             type: String,
+//             enum: {
+//                 values: ['Work from home', 'On site', 'Hybrid'],
+//                 message: '{VALUE} is not supported'
+//             }
+
+//         }
+//     }]
+
+
+// });
 
 module.exports = mongoose.model('Candidate', candidateSchema);

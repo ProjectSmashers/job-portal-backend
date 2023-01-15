@@ -14,13 +14,13 @@ const getAllCandidates = async (req, res) => {
                 )
             }
             else {
-            console.log(candidates);
-            res.status(200).json(
-                {
-                    message: 'success',
-                    data: candidates
-                }
-            )
+                console.log(candidates);
+                res.status(200).json(
+                    {
+                        message: 'success',
+                        data: candidates
+                    }
+                )
             }
         });
     } catch (err) {

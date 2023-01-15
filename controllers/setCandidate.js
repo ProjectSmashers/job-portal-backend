@@ -63,6 +63,11 @@ const createCandidate = async (req, res, next) => {
         })
     } catch (err) {
         console.error('Some error occured');
+        res.status(500).json({
+            statusCode: 0,
+            message: 'Failed',
+        })
+        console.error(err);
     }
 
 

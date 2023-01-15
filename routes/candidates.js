@@ -5,7 +5,10 @@ const router = express.Router();
 const getAllCandidates = require('../controllers/getAllCandidates');
 const setCandidate = require('../controllers/setCandidate');
 const updateBasicDetail = require('../controllers/updateBasicDetail');
-const getCandidateById = require('../controllers/getCandidateById')
+const getCandidateById = require('../controllers/getCandidateById');
+const updateCertificatesById = require('../controllers/updateCertificatesById');
+const updatePreviousEmployment = require('../controllers/updatePrevEmp');
+const updateJobPreference = require('../controllers/updateJobPreference');
 const Candidate = require('../model/Candidate');
 const updateSkill = require('../controllers/updateSkill')
 
@@ -14,8 +17,11 @@ router
   .get('/', getAllCandidates)
   .get('/:id', getCandidateById)
   .post('/', setCandidate)
-  .post('/:id/basicdetail', updateBasicDetail)
-  .put('/:id/updateskill',updateSkill)
+  .put('/:id/basicdetail', updateBasicDetail)
+  .put('/:id/updateskill',updateSkill)  .put('/:id/updateCertificate', updateCertificatesById)
+  .put('/:id/updateprevemp', updatePreviousEmployment)
+  .put('/:id/updatejobpreference', updateJobPreference)
+
 
 
 
