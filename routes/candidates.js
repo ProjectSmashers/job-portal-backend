@@ -10,6 +10,7 @@ const updateCertificatesById = require('../controllers/updateCertificatesById');
 const updatePreviousEmployment = require('../controllers/updatePrevEmp');
 const updateJobPreference = require('../controllers/updateJobPreference');
 const Candidate = require('../model/Candidate');
+const updateSkill = require('../controllers/updateSkill')
 
 
 router
@@ -17,7 +18,7 @@ router
   .get('/:id', getCandidateById)
   .post('/', setCandidate)
   .put('/:id/basicdetail', updateBasicDetail)
-  .put('/:id/updateCertificate', updateCertificatesById)
+  .put('/:id/updateskill',updateSkill)  .put('/:id/updateCertificate', updateCertificatesById)
   .put('/:id/updateprevemp', updatePreviousEmployment)
   .put('/:id/updatejobpreference', updateJobPreference)
 

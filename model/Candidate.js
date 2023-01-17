@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const candidateSchema = new mongoose.Schema({
 
+    test:String,
 
     basicDetail: {
-
+        
         name: {
             type: String,
             //require: true,
@@ -91,34 +92,26 @@ const candidateSchema = new mongoose.Schema({
 
     skills: {
 
-        softSkill: {
-            language: [
-                {
-                    type: String,
-                    _id: true
-                }
-            ],
-        },
 
-        hardSkill: {
-            programmingLanguages: [
-                {
-                    type: String,
-                    _id: true
-                }
-            ],
-            tool: [
-                {
-                    type: String,
-                    _id: true,
-                }
-            ]
-        }
+        languages: [
+            { type: String, }
+        ],
+
+        programmingLanguages: [
+            { type: String }
+        ],
+
+        tools: [
+            {
+                type: String,
+            }
+        ]
+
 
     },
 
-    previousEmployement: [ {
-        
+    previousEmployement: [
+        {
             nameOfCompany: {
                 type: String
             },
@@ -126,7 +119,7 @@ const candidateSchema = new mongoose.Schema({
             duration: {
                 type: Number
             }
-        }  
+        }
     ],
 
     certificates: [
