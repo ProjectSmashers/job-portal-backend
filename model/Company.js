@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const candidateSchema = new mongoose.Schema({
+const companySchema = new mongoose.Schema({
 
     companyName:{
         type: String,
@@ -122,4 +122,4 @@ const candidateSchema = new mongoose.Schema({
 
 })
 
-module.exports = candidateSchema;
+module.exports = mongoose.model('Company', companySchema);
