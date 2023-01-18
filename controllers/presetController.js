@@ -3,13 +3,17 @@ const Preset = require('../model/Preset')
 exports.getAllProgrammingLanguage =async(req,res,next)=>{
 
     try {
+
         const programmingLanguages = await Preset.find().select({programmingLanguage:1,_id:0});
         console.log(programmingLanguages);
+
 
         res.status(200).json(
             {
                 statusCode:1,
+
                 data:programmingLanguages
+
             }
         );
     } catch (error) {
@@ -35,6 +39,7 @@ exports.updateProgrammingLanguage = async(req,res,next)=>{
     }
 
 }
+
 
 
 exports.getAllLanguage =async(req,res,next)=>{
@@ -194,6 +199,7 @@ exports.updateStream = async(req,res,next)=>{
     }
 
 }
+
 
 
 
