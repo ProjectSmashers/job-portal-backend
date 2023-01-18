@@ -2,31 +2,34 @@ const Company = require("../model/Company");
 
 const updateCompany = async (req, res, next) => {
     const companyId = req.params.id;
-    console.log(companyId)
+    console.log(companyId);
+    let updateData = {};
     try {
-        const company = await Company.findOneAndUpdate({_id: companhyId},
-            {
-                $set: {
 
-                    companyName: req.body.companyName,
+         if (req.body.hasOwnProperty("companyName")) {
+            updateData.name = req.body.companyName;
+         }
+   
+         if (req.body.hasOwnProperty("address")) {
+           updateData.address = req.body.address;
+         }
+   
+         if (req.body.hasOwnProperty("headCount")) {
+           updateData.headCount = req.body.headCount;
+         }
+ 
+         if (req.body.hasOwnProperty("hrContactDetail")) {
+         updateData.hrContactDetail = req.body.hrContactDetail;
+         }
+   
+        Company.findOneAndUpdate({ _id: req.params.id }, updateData,
+                            { new: true, useFindAndModify: false });
 
-                   address: {
-                     state: req.body.address.state,
-                     city: req.body.address.city,
-                     pinCode: req.body.address.pinCode,
-                     addressLine2: req.body.address.addressLine2,
-                     addressLine1: req.body.address.addressLine1
-            
-                   }
-                    
-                }
-            }, { new: true, useFindAndModify: false });
-
-        console.log(comoany);
+        console.log(updateData);
         res.status(200).json({
             statuscode: 1,
             message: "Updated",
-            data: company
+            data: updateData
         })
     }
 
@@ -38,6 +41,7 @@ const updateCompany = async (req, res, next) => {
         })
         console.error(err);
     }
-}
+
+}   
 
 module.exports = updateCompany;
