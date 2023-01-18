@@ -15,8 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/api/candidates', candidates);
+
 app.use('/api/company', routerCompany);
 app.use('/api/preset',preset);
+
 
 
 const port = process.env.PORT || 3000;
