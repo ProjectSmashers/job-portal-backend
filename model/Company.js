@@ -122,4 +122,4 @@ const candidateSchema = new mongoose.Schema({
 
 })
 
-module.exports = candidateSchema;
+module.exports = mongoose.model('Company', candidateSchema);
