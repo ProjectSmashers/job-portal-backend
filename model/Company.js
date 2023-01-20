@@ -1,116 +1,119 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const Preset = require('./Preset')
 
-const candidateSchema = new mongoose.Schema({
+const companySchema = new mongoose.Schema({
 
-    companyName:{
+    companyName: {
         type: String,
         // required: true,
     },
 
-    address:{
-        state:{
+    address: {
+        state: {
             type: String,
             required: true
         },
 
-        city:{
+        city: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Preset'
+        },
+
+        pinCode: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Preset'
+        },
+
+        addressLine2: {
+            type: String,
+        },
+
+        addressLine1: {
             type: String,
             required: true
-        },
-
-        pinCode:{
-            type:Number,
-            required: true,
-            min:100000,
-            max:999999
-        },
-
-        addressLine2:{
-            type:String,
-        },
-
-        addressLine1:{
-            type:String,
-            required:true
         }
     },
 
-    headCount:{
-        type:Number,
-        required:true
+    headCount: {
+        type: Number,
+        required: true
     },
 
-    establishedYear:{
-        type:Number,
-        
+    establishedYear: {
+        type: Number,
+
     },
 
-    aboutCompany:{
-        type:String,
-        required:true
+    aboutCompany: {
+        type: String,
+        required: true
     },
 
-    hrContactDetail:{
-        mobileNo:{
-            type:Number,
+    hrContactDetail: {
+        mobileNo: {
+            type: Number,
             required: true
         },
-        email:{
-            type:String,
-            required:true
+        email: {
+            type: String,
+            required: true
         }
     },
 
-    jobPosting:[
+    jobPosting: [
         {
-            positionName:{
-                type:String,
-                required:true
+            positionName: {
+                type: String,
+                required: true
             },
 
-            jobDescription:{
-                type:String,
-                required:true
+            jobDescription: {
+                type: String,
+                required: true
             },
 
-            experienceNeeded:{
-                type:Number,
-                required:true
+            experienceNeeded: {
+                type: Number,
+                required: true
             },
-            typeOfJob:{
-                type:String,
-                enum:["Full time","Part time"]
-            },
-
-            modeOfJob:{
-                type:String,
-                enum:["Remote","Hybrid","On site"]
+            typeOfJob: {
+                type: String,
+                enum: ["Full time", "Part time"]
             },
 
-            responsibilities:{
-                type:String,
-                required:true
+            modeOfJob: {
+                type: String,
+                enum: ["Remote", "Hybrid", "On site"]
             },
 
-            requirement:{
+            responsibilities: {
+                type: String,
+                required: true
+            },
+
+            requirement: {
                 programmingLanguages: [
-                    { type: String }
+                    {
+                        type: mongoose.Schema.Types.ObjectId,
+                        ref: 'Preset'
+                    }
                 ],
                 tool: [
                     {
-                        type: String,
+                        type: mongoose.Schema.Types.ObjectId,
+                        ref: 'Preset'
                     }
                 ],
-                extras:{
-                    type:String
+                extras: {
+                    type: String
                 },
-                qualification:{
-                    type:String
+                qualification: {
+                    type: String
                 }
             },
 
-            lastDateOfApply:{
-                type:Date
+            lastDateOfApply: {
+                type: Date
             },
 
 
@@ -122,4 +125,4 @@ const candidateSchema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('Company', candidateSchema);
+module.exports = mongoose.model('Company', companySchema);

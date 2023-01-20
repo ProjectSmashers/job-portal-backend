@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
+const Preset = require('./Preset')
+
 const candidateSchema = new mongoose.Schema({
 
-    test:String,
+    test: String,
 
     basicDetail: {
-        
+
         name: {
             type: String,
             //require: true,
@@ -94,16 +96,24 @@ const candidateSchema = new mongoose.Schema({
 
 
         languages: [
-            { type: String, }
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Preset'
+
+            }
         ],
 
         programmingLanguages: [
-            { type: String }
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Preset'
+            }
         ],
 
         tools: [
             {
-                type: String,
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Preset'
             }
         ]
 
@@ -166,7 +176,7 @@ const candidateSchema = new mongoose.Schema({
 
 
 //     jobPreference: [{
-        
+
 //             location: 
 //             {
 //                 type: String,
