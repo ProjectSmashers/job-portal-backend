@@ -5,10 +5,14 @@ const setCompany = require('../controllers/setCompany');
 const updateCompany = require('../controllers/updateCompany');
 const Company = require('../model/Company');
 
+const getCompanyDetails = require('../controllers/getCompanyDetails')
+const getCompanyByID = require('../controllers/getCompanyById')
 
 routerCompany
   .post('/', setCompany)
   .put('/:id/companydetails', updateCompany)
+  .get('/' ,getCompanyDetails)
+  .get('/:id',getCompanyByID)
  
 
 
