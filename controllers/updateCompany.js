@@ -5,7 +5,7 @@ const updateCompany = async (req, res, next) => {
     console.log(companyId);
     const updateData = req.body;
     let updateobject = {};
-    
+     
     try {
 
          if (req.body.hasOwnProperty("companyName")) {
