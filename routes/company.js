@@ -5,12 +5,19 @@ const setCompany = require("../controllers/company/setCompany");
 const updateCompany = require("../controllers/company/updateCompany");
 const getCompanyDetails = require("../controllers/company/getCompanyDetails");
 const getCompanyByID = require("../controllers/company/getCompanyById");
+const getJobById = require('../controllers/job/getJobById');
+const updateJob = require('../controllers/job/updateJob');
+const insertJobById = require('../controllers/job/insertJobById');
 
 routerCompany
   .post("/", setCompany)
   .put("/:id/companydetails", updateCompany)
   .get("/", getCompanyDetails)
-  .get("/:id", getCompanyByID);
+  .get("/:id", getCompanyByID)
+  .get('/:id/job', getJobById)
+  .put('/:id/job/insert', insertJobById)
+  .put('/:id/job', updateJob);
+
 
 /*
 router.post('/', (req, res) => {
