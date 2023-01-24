@@ -1,4 +1,4 @@
-const Candidate = require("../model/Candidate");
+const Candidate = require("../../model/Candidate");
 
 const updatePreviousEmployment = async (req, res, next) => {
     const uniqueID = req.params.id
@@ -9,7 +9,7 @@ const updatePreviousEmployment = async (req, res, next) => {
                 $set: {
                     'previousEmployment.$[].nameOfCompany': req.body.previousEmployment.nameOfCompany,
                     'previousEmployment.$[].duration': req.body.previousEmployment.duration,
-                 
+
                 }
             },
             { new: true, useFindAndModify: false, upsert: true }

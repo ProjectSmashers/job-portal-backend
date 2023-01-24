@@ -1,16 +1,14 @@
-const Candidate = require("../model/Candidate");
+const Candidate = require("../../model/Candidate");
 
-const updateCertificate = async (req, res, next) => {
+const updateJobPrefrence = async (req, res, next) => {
     const uniqueID = req.params.id
     console.log(uniqueID)
     try {
         const candidate = await Candidate.updateMany({ _id: uniqueID },
             {
                 $set: {
-                    'certificates.$[].certificateName': req.body.certificates.certificateName,
-                    'certificates.$[].issuedBy': req.body.certificates.issuedBy,
-                    'certificates.$[].issueDate': req.body.certificates.issueDate,
-                    'certificates.$[].credential': req.body.certificates.credential
+                    'jobPreference.location': req.body.jobPreference.location,
+                    'jobPreference.modeOfJob': req.body.jobPreference.modeOfJob
                 }
             },
             { new: true, useFindAndModify: false, upsert: true }
@@ -33,4 +31,4 @@ const updateCertificate = async (req, res, next) => {
     }
 }
 
-module.exports = updateCertificate;
+module.exports = updateJobPrefrence;

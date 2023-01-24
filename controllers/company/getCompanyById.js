@@ -1,10 +1,10 @@
-const Company = require('../model/Company')
-
-const getCompanyDetails = async (req, res) => {
-
+const Company = require('../../model/Company')
+const companyById = async (req, res, next) => {
+    const uniqueID = req.params.id
+    console.log(uniqueID)
     try {
 
-        const company = await Company.find((err, company) => {
+        const company = await Company.findById({ _id: uniqueID }, (err, company) => {
             if (err) {
                 console.log(err);
                 res.status(500).json(
@@ -29,4 +29,4 @@ const getCompanyDetails = async (req, res) => {
 
 };
 
-module.exports = getCompanyDetails;
+module.exports = companyById;

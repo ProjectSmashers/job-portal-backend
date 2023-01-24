@@ -1,4 +1,4 @@
-const Company = require('../model/Company')
+const Company = require('../../model/Company')
 
 const createCompany = async (req, res, next) => {
 
@@ -12,7 +12,7 @@ const createCompany = async (req, res, next) => {
             pinCode: req.body.address.pinCode,
             addressLine2: req.body.address.addressLine2,
             addressLine1: req.body.address.addressLine1
-            
+
         },
 
         headCount: req.body.headCount,
@@ -20,8 +20,8 @@ const createCompany = async (req, res, next) => {
         establishedYear: req.body.establishedYear,
 
         aboutCompany: req.body.aboutCompany,
-        
-        hrContactDetail:{
+
+        hrContactDetail: {
             mobileNo: req.body.hrContactDetail.mobileNo,
             email: req.body.hrContactDetail.email
         }

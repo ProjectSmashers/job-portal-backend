@@ -1,10 +1,10 @@
-const Candidate = require('../model/Candidate')
-const candidateById = async (req, res, next) => {
-    const uniqueID = req.params.id
-    console.log(uniqueID)
+const Company = require('../../model/Company')
+
+const getCompanyDetails = async (req, res) => {
+
     try {
 
-        const candidates = await Candidate.findById({ _id: uniqueID }, (err, candidates) => {
+        const company = await Company.find((err, company) => {
             if (err) {
                 console.log(err);
                 res.status(500).json(
@@ -14,11 +14,11 @@ const candidateById = async (req, res, next) => {
                 )
             }
             else {
-                console.log(candidates);
+                console.log(company);
                 res.status(200).json(
                     {
                         message: 'success',
-                        data: candidates
+                        data: company
                     }
                 )
             }
@@ -29,4 +29,4 @@ const candidateById = async (req, res, next) => {
 
 };
 
-module.exports = candidateById;
+module.exports = getCompanyDetails;
