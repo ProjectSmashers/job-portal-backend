@@ -1,22 +1,16 @@
-const express = require('express');
+const express = require("express");
 const routerCompany = express.Router();
 
-const setCompany = require('../controllers/setCompany');
-const updateCompany = require('../controllers/updateCompany');
-const Company = require('../model/Company');
-
-const getCompanyDetails = require('../controllers/getCompanyDetails')
-const getCompanyByID = require('../controllers/getCompanyById')
+const setCompany = require("../controllers/company/setCompany");
+const updateCompany = require("../controllers/company/updateCompany");
+const getCompanyDetails = require("../controllers/company/getCompanyDetails");
+const getCompanyByID = require("../controllers/company/getCompanyById");
 
 routerCompany
-  .post('/', setCompany)
-  .put('/:id/companydetails', updateCompany)
-  .get('/' ,getCompanyDetails)
-  .get('/:id',getCompanyByID)
- 
-
-
-
+  .post("/", setCompany)
+  .put("/:id/companydetails", updateCompany)
+  .get("/", getCompanyDetails)
+  .get("/:id", getCompanyByID);
 
 /*
 router.post('/', (req, res) => {
