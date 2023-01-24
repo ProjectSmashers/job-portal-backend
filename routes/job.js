@@ -1,8 +1,13 @@
 const express = require("express");
 const routerJob = express.Router();
 
-const setJob = require("../model/Company");
+const getJobById = require('../controllers/job/getJobById');
+const updateJob = require('../controllers/job/updateJob');
+const insertJobById = require('../controllers/job/insertJobById');
 
-routerJob.post();
+routerJob
+    .get('/:id', getJobById)
+    .put('/:id/insert', insertJobById)
+    .put('/:id', updateJob);
 
 module.exports = routerJob;

@@ -74,7 +74,7 @@ const companySchema = new mongoose.Schema({
 
             experienceNeeded: {
                 type: Number,
-                required: true
+                // required: true
             },
             typeOfJob: {
                 type: String,
@@ -88,7 +88,7 @@ const companySchema = new mongoose.Schema({
 
             responsibilities: {
                 type: String,
-                required: true
+                // required: true
             },
 
             requirement: {
