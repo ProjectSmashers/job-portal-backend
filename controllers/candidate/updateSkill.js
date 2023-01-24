@@ -1,27 +1,26 @@
-
-const Candidate = require("../model/Candidate");
+const Candidate = require("../../model/Candidate");
 
 
 const updateSkillTest = async (req, res, next) => {
     const uniqueID = req.params.id
     const updatedSkills = req.body.updatedSkills
 
-    const queryObject ={
-        $set:{
+    const queryObject = {
+        $set: {
             // 'skills.programmingLanguages': updatedSkills.programmingLanguages
         }
     }
 
 
-    const modifyQueryString=(updatedSkills)=>{
-        if(updatedSkills.hasOwnProperty("programmingLanguages")){
-            queryObject.$set = {'skills.programmingLanguages': updatedSkills.programmingLanguages}
-            return       
-        }else if(updatedSkills.hasOwnProperty("languages")){
-            queryObject.$set = {'skills.languages': updatedSkills.languages}
+    const modifyQueryString = (updatedSkills) => {
+        if (updatedSkills.hasOwnProperty("programmingLanguages")) {
+            queryObject.$set = { 'skills.programmingLanguages': updatedSkills.programmingLanguages }
             return
-        }else if(updatedSkills.hasOwnProperty("tools")){
-            queryObject.$set = {'skills.tools': updatedSkills.tools}
+        } else if (updatedSkills.hasOwnProperty("languages")) {
+            queryObject.$set = { 'skills.languages': updatedSkills.languages }
+            return
+        } else if (updatedSkills.hasOwnProperty("tools")) {
+            queryObject.$set = { 'skills.tools': updatedSkills.tools }
             return
         }
     }
@@ -33,10 +32,10 @@ const updateSkillTest = async (req, res, next) => {
     console.log(uniqueID)
     try {
         const updateSkill = await Candidate.updateOne(
-            {_id:uniqueID},
+            { _id: uniqueID },
             queryObject,
             {
-                new:true, useFindAndModify: true, upsert: true
+                new: true, useFindAndModify: true, upsert: true
             }
         )
 
