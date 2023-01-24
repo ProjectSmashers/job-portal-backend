@@ -1,4 +1,4 @@
-const Company = require('../model/Company')
+const Company = require('../../model/Company')
 const companyById = async (req, res, next) => {
     const uniqueID = req.params.id
     console.log(uniqueID)
