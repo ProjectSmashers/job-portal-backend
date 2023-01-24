@@ -4,13 +4,13 @@ const updateCertificate = async (req, res, next) => {
     const uniqueID = req.params.id
     console.log(uniqueID)
     try {
-        const candidate = await Candidate.updateMany({ _id: uniqueID },
+        const candidate = await Candidate.updateMany({ 'certificates._id': uniqueID },
             {
                 $set: {
-                    'certificates.$[].certificateName': req.body.certificates.certificateName,
-                    'certificates.$[].issuedBy': req.body.certificates.issuedBy,
-                    'certificates.$[].issueDate': req.body.certificates.issueDate,
-                    'certificates.$[].credential': req.body.certificates.credential
+                    'certificates.$.certificateName': req.body.certificates.certificateName,
+                    'certificates.$.issuedBy': req.body.certificates.issuedBy,
+                    'certificates.$.issueDate': req.body.certificates.issueDate,
+                    'certificates.$.credential': req.body.certificates.credential
                 }
             },
             { new: true, useFindAndModify: false, upsert: true }

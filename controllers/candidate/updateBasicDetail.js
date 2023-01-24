@@ -4,7 +4,7 @@ const updateCandidate = async (req, res, next) => {
   const uniqueID = req.params.id;
   console.log(uniqueID);
   try {
-    const candidate = await Candidate.findOneAndUpdate(
+    const candidate = await Candidate.updateMany(
       { _id: uniqueID },
       {
         $set: {
