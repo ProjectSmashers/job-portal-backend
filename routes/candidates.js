@@ -9,6 +9,7 @@ const updateCertificatesById = require("../controllers/candidate/updateCertifica
 const updatePreviousEmployment = require("../controllers/candidate/updatePrevEmp");
 const updateJobPreference = require("../controllers/candidate/updateJobPreference");
 const updateSkill = require("../controllers/candidate/updateSkill");
+const updateEducation =require("../controllers/candidate/updateEducation");
 
 routerCandidate
   .get("/", getAllCandidates)
@@ -18,8 +19,8 @@ routerCandidate
   .put("/:id/updateskill", updateSkill)
   .put("/:id/updateCertificate", updateCertificatesById)
   .put("/:id/updateprevemp", updatePreviousEmployment)
-  .put("/:id/updatejobpreference", updateJobPreference);
-
+  .put("/:id/updatejobpreference", updateJobPreference)
+  .put("/:id/updateEducation", updateEducation)
 /*
 router.post('/', (req, res) => {
   const { error } = validateGenre(req.body); 
