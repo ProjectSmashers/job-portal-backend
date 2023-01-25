@@ -14,7 +14,7 @@ const insertJobById = async (req, res, next) => {
                             jobDescription: req.body.jobPosting.jobDescription,
                             experienceNeeded: req.body.jobPosting.experienceNeeded,
                             typeOfJob: req.body.jobPosting.typeOfJob,
-                            modeOfJob: req.body.jobPosting, modeOfJob,
+                            modeOfJob: req.body.jobPosting.modeOfJob,
                             responsibilities: req.body.jobPosting.responsibilities,
                             // requirement: {
                             //     programmingLanguages: ,
