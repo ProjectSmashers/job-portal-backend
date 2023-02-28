@@ -1,7 +1,17 @@
 const InteresetedCandidate = require('../model/InteresetedCandidate')
 
 
-// end point api/interestedcandidate/
+// end point /api/interestedcandidate/
+// POST Request
+/*
+ body
+
+    {
+        "jobId":
+        "candidateId":
+    }
+
+*/
 exports.addCandidateToInterested = async(req,res,next) => {
 
     console.log("In the addCandidate function");
@@ -40,6 +50,37 @@ exports.test = (req,res,next)=>{
         says:"Hello"
     })
 }
+
+
+
+// end point /api/interestedcandidate/:jobId
+// GET Request
+exports.getInterestedCandidate = async(req,res,next)=>{
+    const jobId = req.params.jobId;
+    try{
+        const result = await InteresetedCandidate
+                        .find({jobId:jobId})
+                        .populate('interestedCandidates.candId jobId','basicDetail').exec();
+
+        res.status(200).json({
+            statusCode:1,
+            message: 'Success',
+            data: result
+        })
+    }catch(err){
+
+        console.log(err);
+
+        res.status(500).json({
+            statusCode: 0,
+            message: 'Some error occured',
+            error: err
+        })
+    }
+ 
+
+}
+
 
 const addCandidateToDatabase = async(jobId,candidateId) =>{
     
