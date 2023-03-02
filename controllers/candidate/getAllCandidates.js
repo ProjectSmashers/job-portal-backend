@@ -1,4 +1,4 @@
-const Candidate = require("../../model/Candidate");
+const {Candidate} = require("../../model/Candidate");
 
 
 const getAllCandidates = async (req, res) => {
