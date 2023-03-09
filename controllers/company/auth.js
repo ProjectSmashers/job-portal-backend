@@ -1,6 +1,6 @@
 const dotenv = require('dotenv')
 const jwt = require('jsonwebtoken')
-const {Company,validateRegister} = require("../../model/Company");
+const {Company,validateRegister,validateLogin} = require("../../model/Company");
 const _ = require('lodash');
 const bcrypt=  require('bcrypt');
 
@@ -40,7 +40,7 @@ exports.auth = async(req,res)=>{
 
     console.log('Companys/login is calling');
 
-    const{error} = validateRegister.validate(req.body);
+    const{error} = validateLogin.validate(req.body);
     if(error){
         return res.status(400).json({
             message: error.details[0].message

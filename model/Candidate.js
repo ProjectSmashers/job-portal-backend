@@ -29,12 +29,12 @@ const candidateSchema = new mongoose.Schema({
         unique: true,
     },
 
-    basicDetail: {
+    name: {
+        type: String,
+        //require: true,
+    },
 
-        name: {
-            type: String,
-            //require: true,
-        },
+    basicDetail: {
 
         dateOfBirth: {
             type: Date,
@@ -218,7 +218,14 @@ const candidateSchema = new mongoose.Schema({
 // });
 
 
-const validateUser = Joi.object({
+const validateRegister = Joi.object({
+    name:Joi.string().min(2).max(100).required(),
+    email: Joi.string().min(5).max(255).required().email(),
+    password: Joi.string().min(5).max(255).required()
+});
+
+const validateLogin = Joi.object({
+    
     email: Joi.string().min(5).max(255).required().email(),
     password: Joi.string().min(5).max(255).required()
 });
@@ -230,4 +237,5 @@ const Candidate = mongoose.model('Candidate', candidateSchema);
 
 
 exports.Candidate = Candidate;
-exports.validateRegister = validateUser;
+exports.validateRegister = validateRegister;
+exports.validateLogin = validateLogin;

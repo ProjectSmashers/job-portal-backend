@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const Preset = require('./Preset')
+
+const Joi = require('joi')
 
 
 const jobSchema = new mongoose.Schema({
@@ -145,7 +146,13 @@ companySchema.methods.generateAuthToken = function(){
     return token;
 }
 
-const validateCompanyy = Joi.object({
+const validateRegister = Joi.object({
+    email: Joi.string().min(5).max(255).required().email(),
+    password: Joi.string().min(5).max(255).required()
+});
+
+const validateLogin = Joi.object({
+    
     email: Joi.string().min(5).max(255).required().email(),
     password: Joi.string().min(5).max(255).required()
 });
@@ -155,5 +162,6 @@ const Job = mongoose.model('Job',jobSchema);
 
 exports.Company = Company;
 exports.Job = Job;
-exports.validateRegister = validateCompanyy;
+exports.validateRegister = validateRegister;
+exports.validateLogin = validateLogin;
 
