@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Company = require('../model/Company');
+const {Company,Job} = require('../model/Company');
 const Candidate = require('../model/Candidate')
 
 const interestedCandidateSchema = new mongoose.Schema({
@@ -7,7 +7,7 @@ const interestedCandidateSchema = new mongoose.Schema({
     jobId: 
     {
         type:mongoose.Schema.Types.ObjectId,
-        ref: 'Company',
+        ref: 'Job',
         // unique:true
     },
 

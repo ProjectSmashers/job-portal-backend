@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Preset = require('./Preset')
+const { ProgrammingLanguage, Language, Location, Tool, Stream } = require('./Preset');
 
 const candidateSchema = new mongoose.Schema({
 
@@ -41,7 +41,7 @@ const candidateSchema = new mongoose.Schema({
         email: {
             type: String,
             unique: true,
-            //required: true
+            // required: true
 
         },
 
@@ -66,9 +66,8 @@ const candidateSchema = new mongoose.Schema({
 
 
         stream: {
-            type: String,
-            //required: true,
-
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Stream'
         },
 
         admissionYear: {
@@ -98,7 +97,7 @@ const candidateSchema = new mongoose.Schema({
         languages: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'Preset'
+                ref: 'Language'
 
             }
         ],
@@ -106,14 +105,14 @@ const candidateSchema = new mongoose.Schema({
         programmingLanguages: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'Preset'
+                ref: 'ProgrammingLanguage'
             }
         ],
 
         tools: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'Preset'
+                ref: 'Tool'
             }
         ]
 

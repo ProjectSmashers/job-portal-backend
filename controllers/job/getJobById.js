@@ -1,4 +1,4 @@
-const Job = require("../../model/Company");
+const {Job} = require("../../model/Company");
 
 
 const getJobById = async (req, res) => {
@@ -8,26 +8,23 @@ const getJobById = async (req, res) => {
 
   try {
 
-    const job = await Job.findById({ _id: uniqueID }, 'jobPosting', (err, job) => {
-      if (err) {
-        console.log(err);
-        res.status(500).json(
-          {
-            error: err
-          }
-        )
-      }
-      else {
-        console.log(job);
-        res.status(200).json(
-          {
-            message: 'success',
-            data: job
-          }
-        )
-      }
-    });
+    const job = await Job.findById({ _id: uniqueID })
+                          .populate('companyId','companyName');
+
+    res.status(200).json({
+      statusCode:1,
+      message:'Success',
+      data:job
+    })
+
+    
   } catch (err) {
+
+    res.status(500).json({
+      statusCode:0,
+      message:err.message
+    })
+
     console.log(err);
   }
 

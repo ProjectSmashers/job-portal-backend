@@ -1,4 +1,4 @@
-const Job = require("../../model/Company");
+const {Job} = require("../../model/Company");
 
 const setJobById = async (req, res, next) => {
     const uniqueID = req.params.id;

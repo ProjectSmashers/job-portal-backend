@@ -60,7 +60,7 @@ exports.getInterestedCandidate = async(req,res,next)=>{
     try{
         const result = await InteresetedCandidate
                         .find({jobId:jobId})
-                        .populate('interestedCandidates.candId jobId','basicDetail').exec();
+                        .populate('jobId').exec();
 
         res.status(200).json({
             statusCode:1,

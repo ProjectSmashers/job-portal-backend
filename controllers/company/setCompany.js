@@ -1,19 +1,19 @@
-const Company = require('../../model/Company')
+const {Company} = require('../../model/Company')
 
 const createCompany = async (req, res, next) => {
 
-    const company = new Company({
+    /*const company = new Company({
 
         companyName: req.body.companyName,
 
-        address: {
-            state: req.body.address.state,
-            city: req.body.address.city,
-            pinCode: req.body.address.pinCode,
-            addressLine2: req.body.address.addressLine2,
-            addressLine1: req.body.address.addressLine1
+        // address: {
+        //     state: req.body.address.state,
+        //     city: req.body.address.city,
+        //     pinCode: req.body.address.pinCode,
+        //     addressLine2: req.body.address.addressLine2,
+        //     addressLine1: req.body.address.addressLine1
 
-        },
+        // },
 
         headCount: req.body.headCount,
 
@@ -26,7 +26,7 @@ const createCompany = async (req, res, next) => {
             email: req.body.hrContactDetail.email
         }
 
-    });
+    });*/
 
     try {
         // if(Company.find({}))

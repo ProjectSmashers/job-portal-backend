@@ -1,17 +1,16 @@
-const Preset = require('../model/Preset')
+const { ProgrammingLanguage, Language, Location, Tool, Stream } = require('../model/Preset')
 
 exports.getAllProgrammingLanguage =async(req,res,next)=>{
 
     try {
 
-        const programmingLanguages = await Preset.find().select({programmingLanguage:1,_id:0});
+        const programmingLanguages = await ProgrammingLanguage.find();
         console.log(programmingLanguages);
 
 
         res.status(200).json(
             {
                 statusCode:1,
-
                 data:programmingLanguages
 
             }
@@ -23,20 +22,31 @@ exports.getAllProgrammingLanguage =async(req,res,next)=>{
 
 exports.updateProgrammingLanguage = async(req,res,next)=>{
 
-    const programmingLanguage = req.body.programmingLanguage;
-    console.log(programmingLanguage);
 
-    try {
-        const programmingLang = await Preset.updateOne({},{$push:{programmingLanguage:programmingLanguage}});
-        console.log(programmingLang);
-        res.status(200).json({
-            statusCode : 1,
-            data:programmingLang
+    let programmingLanguage = await ProgrammingLanguage.findOne({name:req.body.name});
+
+    if(programmingLanguage){
+        return res.status(400).json({
+            statusCode:-1,
+            message:'User already exists'
         })
-                
-    } catch (error) {
-        console.log(error);
     }
+
+    programmingLanguage = new ProgrammingLanguage({
+        name:req.body.name
+    });
+
+    try{
+        const result = await programmingLanguage.save();
+
+        res.status(200).json({
+            statusCode:1,
+            message:'saved successfully'
+        })
+    }catch(err){
+        console.log(err);
+    }
+
 
 }
 
@@ -45,7 +55,7 @@ exports.updateProgrammingLanguage = async(req,res,next)=>{
 exports.getAllLanguage =async(req,res,next)=>{
 
     try {
-        const languages = await Preset.find().select({languages:1,_id:0});
+        const languages = await Language.find();
         console.log(languages);
 
         res.status(200).json(
@@ -64,19 +74,29 @@ exports.getAllLanguage =async(req,res,next)=>{
 
 exports.updateLanguage = async(req,res,next)=>{
 
-    const language = req.body.language;
-    console.log(language);
-
-    try {
-        const languages = await Preset.updateOne({},{$push:{languages:language}});
-        console.log(languages);
-        res.status(200).json({
-            statusCode : 1,
-            data:languages
+    let language = await Language.findOne({name:req.body.name});
+    
+    if(language){
+        return res.status(400).json({
+            statusCode:-1,
+            message:'Language already exists'
         })
-                
-    } catch (error) {
-        console.log(error);
+    }
+
+    language = new Language({
+        name:req.body.name
+    });
+
+    try{
+        const result = await language.save();
+
+        res.status(200).json({
+            statusCode:1,
+            message:'saved successfully',
+            data:result
+        })
+    }catch(err){
+        console.log(err);
     }
 
 }
@@ -85,7 +105,7 @@ exports.updateLanguage = async(req,res,next)=>{
 exports.getAllTools =async(req,res,next)=>{
 
     try {
-        const tools = await Preset.find().select({tools:1,_id:0});
+        const tools = await Tool.find();
         console.log(tools);
 
         res.status(200).json(
@@ -104,19 +124,29 @@ exports.getAllTools =async(req,res,next)=>{
 
 exports.updateTools = async(req,res,next)=>{
 
-    const tools = req.body.tool;
-    console.log(tools);
-
-    try {
-        const tool = await Preset.updateOne({},{$push:{tools:tools}});
-        console.log(tool);
-        res.status(200).json({
-            statusCode : 1,
-            data:tool
+    let tool = await Tool.findOne({name:req.body.name});
+    
+    if(tool){
+        return res.status(400).json({
+            statusCode:-1,
+            message:'Language already exists'
         })
-                
-    } catch (error) {
-        console.log(error);
+    }
+
+    tool = new Tool({
+        name:req.body.name
+    });
+
+    try{
+        const result = await tool.save();
+
+        res.status(200).json({
+            statusCode:1,
+            message:'saved successfully',
+            data:result
+        })
+    }catch(err){
+        console.log(err);
     }
 
 }
@@ -164,7 +194,7 @@ exports.updateLocation = async(req,res,next)=>{
 exports.getAllStreams =async(req,res,next)=>{
 
     try {
-        const streams = await Preset.find().select({stream:1,_id:0});
+        const streams = await Stream.find();
         console.log(streams);
 
         res.status(200).json(
@@ -183,19 +213,29 @@ exports.getAllStreams =async(req,res,next)=>{
 
 exports.updateStream = async(req,res,next)=>{
 
-    const stream = req.body.stream;
-    console.log(stream);
-
-    try {
-        const streams = await Preset.updateOne({},{$push:{stream:stream}});
-        console.log(streams);
-        res.status(200).json({
-            statusCode : 1,
-            data:streams
+    let stream = await Stream.findOne({name:req.body.name});
+    
+    if(stream){
+        return res.status(400).json({
+            statusCode:-1,
+            message:'Stream already exists'
         })
-                
-    } catch (error) {
-        console.log(error);
+    }
+
+    stream = new Stream({
+        name:req.body.name
+    });
+
+    try{
+        const result = await stream.save();
+
+        res.status(200).json({
+            statusCode:1,
+            message:'saved successfully',
+            data:result
+        })
+    }catch(err){
+        console.log(err);
     }
 
 }

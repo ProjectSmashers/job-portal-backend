@@ -23,18 +23,17 @@ router
 
 
     .get('/programminglanguage', getAllProgrammingLanguage)
-    .put('/programminglanguage', updateProgrammingLanguage)
-
+    .post('/programminglanguage', updateProgrammingLanguage)
     .get('/languages', getAllLanguage)
-    .put('/languages', updateLanguage)
+    .post('/languages', updateLanguage)
 
     .get('/tools', getAllTools)
-    .put('/tools', updateTools)
+    .post('/tools', updateTools)
 
     .get('/locations', getAllLocations)
-    .put('/locations', updateLocation)
+    .post('/locations', updateLocation)
 
     .get('/streams', getAllStreams)
-    .put('/streams', updateStream)
+    .post('/streams', updateStream)
 
 module.exports = router;

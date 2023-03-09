@@ -1,4 +1,4 @@
-const Company = require('../../model/Company')
+const {Company,Job} = require('../../model/Company')
 
 const updateCompany = async (req, res, next) => {
     const companyId = req.params.id;
