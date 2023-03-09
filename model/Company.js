@@ -67,6 +67,16 @@ const companySchema = new mongoose.Schema({
         // required: true,
     },
 
+    email:{
+        type:String,
+        required:true
+    },
+
+    password:{
+        type:String,
+        required:true
+    },
+
     address: {
         state: {
             type: String,
@@ -129,8 +139,21 @@ const companySchema = new mongoose.Schema({
 
 })
 
-const Company =  mongoose.model('Company', companySchema);
+
+companySchema.methods.generateAuthToken = function(){
+    const token = jwt.sign({_id:this._id,isAdmin:this.isAdmin},process.env.JWT_PRIVATE_KEY);
+    return token;
+}
+
+const validateCompanyy = Joi.object({
+    email: Joi.string().min(5).max(255).required().email(),
+    password: Joi.string().min(5).max(255).required()
+});
+
+const Company = mongoose.model('Company', companySchema);
 const Job = mongoose.model('Job',jobSchema);
 
 exports.Company = Company;
 exports.Job = Job;
+exports.validateRegister = validateCompanyy;
+

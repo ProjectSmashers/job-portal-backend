@@ -1,9 +1,33 @@
+const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
+
 const { ProgrammingLanguage, Language, Location, Tool, Stream } = require('./Preset');
+
+
+const Joi = require('joi');
+
 
 const candidateSchema = new mongoose.Schema({
 
     test: String,
+
+    email: {
+        type: String,
+        unique: true,
+        //required: true
+
+    },
+
+    isAdmin:{
+        type: Boolean,
+        default:false
+    },
+
+    password: {
+        type: String,
+        unique: true,
+    },
 
     basicDetail: {
 
@@ -22,7 +46,7 @@ const candidateSchema = new mongoose.Schema({
 
         },
 
-        gender: {
+        gender: { 
             type: String,
             enum: {
                 values: ['Male', 'Female', 'Other'],
@@ -34,16 +58,10 @@ const candidateSchema = new mongoose.Schema({
         mobileNo: {
             type: Number,
             min: [1000000000, "Mobile no. must have 10 digits"],
-            unique: true,
+            // unique: true,
             //required: true
         },
 
-        email: {
-            type: String,
-            unique: true,
-            // required: true
-
-        },
 
         bio: {
             type: String,
@@ -173,6 +191,10 @@ const candidateSchema = new mongoose.Schema({
 
 });
 
+    candidateSchema.methods.generateAuthToken = function(){
+        const token = jwt.sign({_id:this._id,isAdmin:this.isAdmin},process.env.JWT_PRIVATE_KEY);
+        return token;
+    }
 
 //     jobPreference: [{
 
@@ -195,4 +217,17 @@ const candidateSchema = new mongoose.Schema({
 
 // });
 
-module.exports = mongoose.model('Candidate', candidateSchema);
+
+const validateUser = Joi.object({
+    email: Joi.string().min(5).max(255).required().email(),
+    password: Joi.string().min(5).max(255).required()
+});
+
+
+
+
+const Candidate = mongoose.model('Candidate', candidateSchema);
+
+
+exports.Candidate = Candidate;
+exports.validateRegister = validateUser;

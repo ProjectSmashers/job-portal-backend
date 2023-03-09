@@ -14,7 +14,6 @@ const updateCandidate = async (req, res, next) => {
             address: req.body.basicDetail.address,
             gender: req.body.basicDetail.gender,
             mobileNo: req.body.basicDetail.mobileNo,
-            email: req.body.basicDetail.email,
             bio: req.body.basicDetail.bio,
           },
         },
