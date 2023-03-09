@@ -1,4 +1,4 @@
-const Candidate = require("../../model/Candidate");
+const {Candidate} = require("../../model/Candidate");
 
 const updateCandidate = async (req, res, next) => {
   const uniqueID = req.params.id;
@@ -8,8 +8,9 @@ const updateCandidate = async (req, res, next) => {
       { _id: uniqueID },
       {
         $set: {
+          name: req.body.name,
           basicDetail: {
-            name: req.body.basicDetail.name,
+            
             dateOfBirth: req.body.basicDetail.dateOfBirth,
             address: req.body.basicDetail.address,
             gender: req.body.basicDetail.gender,

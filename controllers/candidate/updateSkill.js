@@ -1,4 +1,4 @@
-const Candidate = require("../../model/Candidate");
+const {Candidate} = require("../../model/Candidate");
 
 
 const updateSkillTest = async (req, res, next) => {

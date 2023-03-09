@@ -1,4 +1,4 @@
-const Candidate = require("../../model/Candidate");
+const {Candidate} = require("../../model/Candidate");
 
 const updatePreviousEmployment = async (req, res, next) => {
     const uniqueID = req.params.id

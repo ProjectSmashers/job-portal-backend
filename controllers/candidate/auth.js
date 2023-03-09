@@ -1,6 +1,6 @@
 const dotenv = require('dotenv')
 const jwt = require('jsonwebtoken')
-const {Candidate,validateRegister} = require("../../model/Candidate");
+const {Candidate,validateRegister,validateLogin} = require("../../model/Candidate");
 const _ = require('lodash');
 const bcrypt=  require('bcrypt');
 
@@ -25,7 +25,7 @@ exports.register = async(req,res)=>{
     }
 
 
-    user = new Candidate(_.pick(req.body,['email','password']));
+    user = new Candidate(_.pick(req.body,['name','email','password']));
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password,salt);
@@ -40,7 +40,7 @@ exports.auth = async(req,res)=>{
 
     console.log('candidates/login is calling');
 
-    const{error} = validateRegister.validate(req.body);
+    const{error} = validateLogin.validate(req.body);
     if(error){
         return res.status(400).json({
             message: error.details[0].message
