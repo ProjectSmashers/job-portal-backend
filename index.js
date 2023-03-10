@@ -3,6 +3,7 @@ const routerCompany = require("./routes/company");
 const routerpreset = require("./routes/preset");
 const routerInterested =  require('./routes/interested')
 const routerJob = require('./routes/job')
+const cors = require('cors')
 
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
@@ -12,6 +13,7 @@ connectDB();
 const express = require("express");
 const app = express();
 
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
