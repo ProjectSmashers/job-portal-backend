@@ -5,7 +5,8 @@ const companyById = async (req, res, next) => {
     try {
 
         const company = await Company.findById({ _id: uniqueID })
-                        .populate('jobId');
+                        .populate('jobPosting','-_id -companyId')
+                        .exec();
 
         res.status(200).json({
             statusCode:1,
