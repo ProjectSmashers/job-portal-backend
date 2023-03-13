@@ -1,5 +1,4 @@
-const {Candidate} = require("../../model/Candidate");
-
+const { Candidate } = require("../../model/Candidate");
 
 const updateSkillTest = async (req, res, next) => {
     const uniqueID = req.params.id
@@ -10,7 +9,6 @@ const updateSkillTest = async (req, res, next) => {
             // 'skills.programmingLanguages': updatedSkills.programmingLanguages
         }
     }
-
 
     const modifyQueryString = (updatedSkills) => {
         if (updatedSkills.hasOwnProperty("programmingLanguages")) {
@@ -26,8 +24,6 @@ const updateSkillTest = async (req, res, next) => {
     }
 
     modifyQueryString(updatedSkills);
-
-
 
     console.log(uniqueID)
     try {
@@ -50,6 +46,48 @@ const updateSkillTest = async (req, res, next) => {
         console.log(err.message)
     }
 }
+
+// const updateSkillTest = async (req, res, next) => {
+//   const uniqueID = req.params.id;
+//   //const updatedSkills = req.body.updatedSkills;
+
+//   //skills.programmingLanguages: updatedSkills.programmingLanguages;
+
+//   const skills = {
+//     programmingLanguages: req.body.programmingLanguages,
+//     languages: req.body.languages,
+//     tools: req.body.tools
+//    };
+
+//   try {
+//     let candidate = await Candidate.findById(req.params.id);
+//     candidate.skills.push(skills);
+//     try {
+//       const result = await candidate.save();
+
+//       res.status(200).json({
+//         statusCode: 1,
+//         message: "Success",
+//         date: result,
+//       });
+//     } catch (error) {
+//       res.status(500).json({
+//         statusCode: 1,
+//         message: error.message,
+        
+//       }
+      
+//       );
+//     }
+//   } catch (error) {
+//     res.status(500).json({
+//       statusCode: 1,
+//       message: error.message,
+//     })
+//     console.log(error);
+//     ;
+//   }
+// };
 
 
 

@@ -70,12 +70,12 @@ const companySchema = new mongoose.Schema({
 
     email:{
         type:String,
-        required:true
+        //required:true
     },
 
     password:{
         type:String,
-        required:true
+        //required:true
     },
 
     address: {
@@ -85,13 +85,13 @@ const companySchema = new mongoose.Schema({
         },
 
         city: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Location'
+            type: String//mongoose.Schema.Types.ObjectId,
+           // ref: 'Location'
         },
 
         pinCode: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Location'
+            type: String//mongoose.Schema.Types.ObjectId,
+            //ref: 'Location'
         },
 
         addressLine2: {
