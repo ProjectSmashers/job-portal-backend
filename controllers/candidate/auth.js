@@ -5,6 +5,7 @@ const _ = require('lodash');
 const bcrypt=  require('bcrypt');
 
 
+
 // @desc to register a user
 // end point POST /api/candidates/signup
 exports.register = async(req,res)=>{
@@ -64,7 +65,14 @@ exports.auth = async(req,res)=>{
     }
 
     const token = user.generateAuthToken();
+    req.session.token = token;
+    req.session.Id = user._id;
 
 
     res.header('x-auth-token', token).send(token);
+
+    // res.header('x-auth-token', token).json({
+    //     cookie:req.session
+    // });
+
 }
