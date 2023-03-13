@@ -84,8 +84,8 @@ const candidateSchema = new mongoose.Schema({
 
 
         stream: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Stream'
+            type: String //mongoose.Schema.Types.ObjectId,
+            //ref: 'Stream'
         },
 
         admissionYear: {
@@ -114,23 +114,23 @@ const candidateSchema = new mongoose.Schema({
 
         languages: [
             {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Language'
+                type: String //mongoose.Schema.Types.ObjectId,
+                // ref: 'Language'
 
             }
         ],
 
         programmingLanguages: [
             {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'ProgrammingLanguage'
+                type: String //mongoose.Schema.Types.ObjectId,
+                // ref: 'ProgrammingLanguage'
             }
         ],
 
         tools: [
             {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Tool'
+                type: String //mongoose.Schema.Types.ObjectId,
+                // ref: 'Tool'
             }
         ]
 

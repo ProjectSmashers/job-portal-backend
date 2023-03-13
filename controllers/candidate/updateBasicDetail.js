@@ -11,11 +11,11 @@ const updateCandidate = async (req, res, next) => {
           name: req.body.name,
           basicDetail: {
             
-            dateOfBirth: req.body.basicDetail.dateOfBirth,
-            address: req.body.basicDetail.address,
-            gender: req.body.basicDetail.gender,
-            mobileNo: req.body.basicDetail.mobileNo,
-            bio: req.body.basicDetail.bio,
+            dateOfBirth: req.body.dateOfBirth,
+            address: req.body.address,
+            gender: req.body.gender,
+            mobileNo: req.body.mobileNo,
+            bio: req.body.bio,
           },
         },
       },
@@ -32,7 +32,7 @@ const updateCandidate = async (req, res, next) => {
     console.error("Some error occured");
     res.status(500).json({
       statusCode: 0,
-      message: "Failed",
+      message: err.message,
     });
     console.error(err);
   }

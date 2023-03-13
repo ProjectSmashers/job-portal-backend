@@ -8,22 +8,27 @@ const updateCompany = async (req, res, next) => {
 
     try {
 
-        if (req.body.hasOwnProperty("companyName")) {
-            updateobject.companyName = req.body.companyName;
-        }
+        // if (req.body.hasOwnProperty("companyName")) {
+        //     updateobject.companyName = req.body.companyName;
+        // }
 
-        if (req.body.hasOwnProperty("address")) {
-            updateobject.companyName = req.body.address;
-        }
+        // if (req.body.hasOwnProperty("address")) {
+        //     updateobject.companyName = req.body.address;
+        // }
 
-        if (req.body.hasOwnProperty("headCount")) {
-            updateobject.headCount = req.body.headCount;
-        }
+        // if (req.body.hasOwnProperty("headCount")) {
+        //     updateobject.headCount = req.body.headCount;
+        // }
 
-        if (req.body.hasOwnProperty("hrContactDetail")) {
-            updateobject.hrContactDetail = req.body.hrContactDetail;
-        }
+        // if (req.body.hasOwnProperty("hrContactDetail")) {
+        //     updateobject.hrContactDetail = req.body.hrContactDetail;
+        // }
 
+
+        updateobject.headCount = req.body.headCount;
+        updateobject.establishedYear = req.body.establishedYear;
+        updateobject.aboutCompany = req.body.aboutCompany;
+        
         await Company.findOneAndUpdate({ _id: companyId }, { $set: updateobject },
             { new: true, useFindAndModify: false });
 
