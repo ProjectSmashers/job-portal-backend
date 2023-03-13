@@ -64,6 +64,8 @@ exports.auth = async(req,res)=>{
     }
 
     const token = user.generateAuthToken();
+    req.session.token = token;
+    req.session.Id = user._id;
 
 
     res.header('x-auth-token', token).send(token);
