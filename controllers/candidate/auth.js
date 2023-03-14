@@ -69,10 +69,10 @@ exports.auth = async(req,res)=>{
     req.session.Id = user._id;
 
 
-    res.header('x-auth-token', token).send(token);
+    // res.header('x-auth-token', token).send(token);
 
-    // res.header('x-auth-token', token).json({
-    //     cookie:req.session
-    // });
+    res.header('x-auth-token', token).json({
+        data:req.session
+    });
 
 }

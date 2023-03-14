@@ -14,6 +14,7 @@ const updateEducation =require("../controllers/candidate/updateEducation");
 const {register,auth} = require("../controllers/candidate/auth")
 const updateEducationByCandidateId = require('../controllers/candidate/updateEducationByCandidateId')
 const updateSkillByCandidateId = require('../controllers/candidate/updateSkillByCandidateId')
+const {getAllJobs,getAllJobsApplied} = require('../controllers/candidate/getAllJobsApplied')
 
 routerCandidate
   .get("/", getAllCandidates)
@@ -31,6 +32,10 @@ routerCandidate
   .post("/login",auth)
   .post("/:id/updateEducation", updateEducationByCandidateId)
   .post("/:id/updateskillbycandidateid",updateSkillByCandidateId)
+  
+  .get("/jobs/getalljobsno",getAllJobs)
+  .get("/:id/jobs/getalljobsno",getAllJobsApplied)
+
 /*
 router.post('/', (req, res) => {
   const { error } = validateGenre(req.body); 
