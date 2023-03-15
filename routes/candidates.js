@@ -14,7 +14,11 @@ const updateEducation =require("../controllers/candidate/updateEducation");
 const {register,auth} = require("../controllers/candidate/auth")
 const updateEducationByCandidateId = require('../controllers/candidate/updateEducationByCandidateId')
 const updateSkillByCandidateId = require('../controllers/candidate/updateSkillByCandidateId')
+
+const authmiddle = require('../middleware/auth')
+
 const {getAllJobs,getAllJobsApplied,getAllJobsAppliedList} = require('../controllers/candidate/getAllJobsApplied')
+
 
 routerCandidate
   .get("/", getAllCandidates)

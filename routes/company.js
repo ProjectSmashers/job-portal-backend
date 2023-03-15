@@ -20,7 +20,7 @@ routerCompany
   .put("/:id/updateaddressbyid", updateAddressById)
   .put("/:id/updatehrdetails",updateHrDetails)
   .put('/:id/job', updateJob)
-  .post('/:companyId/job', setJob)
+  .put('/:id/newjob', setJob)
 
 
 /*
