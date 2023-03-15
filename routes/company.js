@@ -17,7 +17,7 @@ routerCompany
   .get("/:id", getCompanyByID)
 
   .put('/:id/job', updateJob)
-  .post('/:companyId/job', setJob)
+  .put('/:id/newjob', setJob)
 
 
 /*

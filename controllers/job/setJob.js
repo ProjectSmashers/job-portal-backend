@@ -12,21 +12,26 @@ const setJob = async(req,res,next) =>{
             typeOfJob,
             modeOfJob,
             responsibilities,
-            requirement
+            // requirement
+            programmingLanguages,
+            tool,
+            qualification
         } = req.body;
     
-        const companyId = req.params.companyId;
+        const companyId = req.params.id;
         console.log(companyId);
     
         const job = new Job({
-            companyId : companyId,
-            positionName:postionName,
-            jobDescription:jobDescription,
-            experienceNeeded:experienceNeeded,
-            typeOfJob:typeOfJob,
-            modeOfJob:modeOfJob,
-            responsibilities:responsibilities,
-            requirement: requirement
+            'companyId' : companyId,
+            'positionName':postionName,
+            'jobDescription':jobDescription,
+            'experienceNeeded':experienceNeeded,
+            'typeOfJob':typeOfJob,
+            'modeOfJob':modeOfJob,
+            'responsibilities':responsibilities,
+            'requirement.programmingLanguages': programmingLanguages,
+            'requirement.tool' : tool,
+            'requirement.qualification' : qualification
             
         })
 

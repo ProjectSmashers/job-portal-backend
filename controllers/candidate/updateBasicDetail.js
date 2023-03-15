@@ -8,15 +8,16 @@ const updateCandidate = async (req, res, next) => {
       { _id: uniqueID },
       {
         $set: {
-          name: req.body.name,
-          basicDetail: {
+          //name: req.body.name,
+         
             
-            dateOfBirth: req.body.basicDetail.dateOfBirth,
-            address: req.body.basicDetail.address,
-            gender: req.body.basicDetail.gender,
-            mobileNo: req.body.basicDetail.mobileNo,
-            bio: req.body.basicDetail.bio,
-          },
+            
+            'basicDetail.dateOfBirth': req.body.dateOfBirth,
+            'basicDetail.address': req.body.address,
+            'basicDetail.gender': req.body.gender,
+            'basicDetail.mobileNo': req.body.mobileNo,
+            'basicDetail.bio': req.body.bio,
+          
         },
       },
       { new: true, useFindAndModify: false }

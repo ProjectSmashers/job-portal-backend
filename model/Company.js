@@ -10,8 +10,8 @@ const jobSchema = new mongoose.Schema({
     },
 
     companyId:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'Company'
+        type: String //mongoose.Schema.Types.ObjectId,
+        //ref:'Company'
     },
 
     jobDescription: {
@@ -25,12 +25,12 @@ const jobSchema = new mongoose.Schema({
     },
     typeOfJob: {
         type: String,
-        enum: ["Full time", "Part time"]
+        //enum: ["Full time", "Part time"]
     },
 
     modeOfJob: {
         type: String,
-        enum: ["Remote", "Hybrid", "On site"]
+        //enum: ["Remote", "Hybrid", "On site"]
     },
 
     responsibilities: {
@@ -41,14 +41,14 @@ const jobSchema = new mongoose.Schema({
     requirement: {
         programmingLanguages: [
             {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'ProgrammingLanguage'
+                type: String //mongoose.Schema.Types.ObjectId,
+                // ref: 'ProgrammingLanguage'
             }
         ],
         tool: [
             {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Tool'
+                type: String //mongoose.Schema.Types.ObjectId,
+                //ref: 'Tool'
             }
         ],
         extras: {

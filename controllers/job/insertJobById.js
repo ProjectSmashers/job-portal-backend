@@ -10,7 +10,7 @@ const insertJobById = async (companyId,jobId) => {
             { _id: uniqueID },
             {
                 $push: {
-                    jobPosting: jobId
+                    'jobPosting': jobId
                 }
             },
 

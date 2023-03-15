@@ -65,10 +65,18 @@ exports.auth = async(req,res)=>{
     }
 
     const token = user.generateAuthToken();
-    req.session.token = token;
-    req.session.Id = user._id;
+    // req.session.token = token;
+    // req.session.Id = user._id;
+    res.cookie('jwt', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 })
 
-
+    // console.log((user._id).toString() );
+    const user_id = (user._id).toString();
+    res.cookie('Userid', user_id, { 
+                                    maxAge: 7 * 24 * 60 * 60 * 1000,
+                                    domain: 'localhost',
+                                    path: '/'
+                                    })
+    
     res.header('x-auth-token', token).send(token);
 
     // res.header('x-auth-token', token).json({
