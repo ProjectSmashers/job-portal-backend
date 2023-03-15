@@ -9,13 +9,16 @@ const getJobById = require('../controllers/job/getJobById');
 const updateJob = require('../controllers/job/updateJob');
 const insertJobById = require('../controllers/job/insertJobById');
 const setJob = require('../controllers/job/setJob')
+const updateAddressById = require('../controllers/company/updateAddressById');
+const updateHrDetails = require("../controllers/company/updateHrDetails");
 
 routerCompany
   .post("/", setCompany)
   .put("/:id/companydetails", updateCompany)
   .get("/", getCompanyDetails)
   .get("/:id", getCompanyByID)
-
+  .put("/:id/updateaddressbyid", updateAddressById)
+  .put("/:id/updatehrdetails",updateHrDetails)
   .put('/:id/job', updateJob)
   .put('/:id/newjob', setJob)
 

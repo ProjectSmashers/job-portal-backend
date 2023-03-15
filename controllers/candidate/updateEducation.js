@@ -7,12 +7,12 @@ const updateEducation = async (req, res, next) => {
         const candidate = await Candidate.updateMany({ 'education._id': uniqueID },
             {
                 $set: {
-                    'education.$.nameOfInstitute': req.body.education.nameOfInstitute,
-                    'education.$.nameOfUniversity': req.body.education.nameOfUniversity,
-                    'education.$.stream': req.body.education.stream,
-                    'education.$.admissionYear': req.body.education.admissionYear,
-                    'education.$.passingYear': req.body.education.passingYear,
-                    'education.$.aggregate': req.body.education.aggregate
+                    'education.$.nameOfInstitute': req.body.nameOfInstitute,
+                    'education.$.nameOfUniversity': req.body.nameOfUniversity,
+                    'education.$.stream': req.body.stream,
+                    'education.$.admissionYear': req.body.admissionYear,
+                    'education.$.passingYear': req.body.passingYear,
+                    'education.$.aggregate': req.body.aggregate
                     
                 }
             },
