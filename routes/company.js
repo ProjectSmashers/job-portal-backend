@@ -9,6 +9,8 @@ const getJobById = require('../controllers/job/getJobById');
 const updateJob = require('../controllers/job/updateJob');
 const insertJobById = require('../controllers/job/insertJobById');
 const setJob = require('../controllers/job/setJob')
+const updateAddressById = require('../controllers/company/updateAddressById');
+const updateHrDetails = require("../controllers/company/updateHrDetails");
 const {register,auth} = require("../controllers/company/auth")
 
 routerCompany
@@ -16,6 +18,8 @@ routerCompany
   .put("/:id/companydetails", updateCompany)
   .get("/", getCompanyDetails)
   .get("/:id", getCompanyByID)
+  .put("/:id/updateaddressbyid", updateAddressById)
+  .put("/:id/updatehrdetails",updateHrDetails)
   .post("/signup",register)
   .post("/login",auth)
   .put('/:id/job', updateJob)

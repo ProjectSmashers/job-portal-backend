@@ -11,6 +11,7 @@ const updateCandidate = async (req, res, next) => {
           //name: req.body.name,
          
             
+
             
             'basicDetail.dateOfBirth': req.body.dateOfBirth,
             'basicDetail.address': req.body.address,
@@ -18,6 +19,7 @@ const updateCandidate = async (req, res, next) => {
             'basicDetail.mobileNo': req.body.mobileNo,
             'basicDetail.bio': req.body.bio,
           
+
         },
       },
       { new: true, useFindAndModify: false }
@@ -33,7 +35,7 @@ const updateCandidate = async (req, res, next) => {
     console.error("Some error occured");
     res.status(500).json({
       statusCode: 0,
-      message: "Failed",
+      message: err.message,
     });
     console.error(err);
   }

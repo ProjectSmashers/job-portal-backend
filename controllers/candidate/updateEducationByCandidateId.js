@@ -1,3 +1,4 @@
+
 const {Candidate} = require("../../model/Candidate");
 
 const updateEducationByCandidateId = async (req, res, next) => {
@@ -23,6 +24,7 @@ const updateEducationByCandidateId = async (req, res, next) => {
                 message:'Success',
                 data: result
             })
+
 
         }catch(err){
             res.status(500).json({
