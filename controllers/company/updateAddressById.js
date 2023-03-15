@@ -1,7 +1,7 @@
 const {Company} = require("../../model/Company");
 
 const updateAddressById = async (req, res, next) => {
-    const { companyId } = req.params;
+    const companyId  = req.params.id;
     const { state, city, pinCode, addressLine1 } = req.body;
   
     try {
