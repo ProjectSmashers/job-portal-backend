@@ -148,7 +148,8 @@ companySchema.methods.generateAuthToken = function(){
 
 const validateRegister = Joi.object({
     email: Joi.string().min(5).max(255).required().email(),
-    password: Joi.string().min(5).max(255).required()
+    password: Joi.string().min(5).max(255).required(),
+    companyName:Joi.string().min(2).max(100).required()
 });
 
 const validateLogin = Joi.object({

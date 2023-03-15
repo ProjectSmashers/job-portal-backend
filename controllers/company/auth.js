@@ -25,7 +25,7 @@ exports.register = async(req,res)=>{
     }
 
 
-    user = new Company(_.pick(req.body,['email','password']));
+    user = new Company(_.pick(req.body,['companyName','email','password']));
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password,salt);
